@@ -5,22 +5,23 @@
   "keywords": [
     "basic",
     "data",
-    "vanilla"
+    "vanilla",
+    "object"
   ],
+  "require": {
+    "php": ">=7.3"
+  },
+  "require-dev": {
+    "ext-json": "*"
+  },
   "autoload": {
     "psr-4": {
       "Base\\": "src/"
     }
   },
-  "require": {
-    "php": ">=7.3"
-  },
   "extra": {
     "branch-alias": {
-      "dev-master": "1.0.x-dev"
+      "dev-master": "1.x-dev"
     }
-  },
-  "require-dev": {
-    "ext-json": "*"
   }
 }
