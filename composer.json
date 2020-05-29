@@ -1,5 +1,5 @@
 {
-  "name": "php-objects/data",
+  "name": "objects/data",
   "description": "A data-object that can be extended and decorated with traits.",
   "license": "MIT",
   "keywords": [
