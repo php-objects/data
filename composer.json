@@ -1,11 +1,26 @@
 {
+  "name": "php-objects/data",
+  "description": "A data-object that can be extended and decorated with traits.",
+  "license": "MIT",
+  "keywords": [
+    "basic",
+    "data",
+    "vanilla"
+  ],
   "autoload": {
     "psr-4": {
       "Base\\": "src/"
     }
   },
   "require": {
-    "php": ">=7.3",
+    "php": ">=7.3"
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0.x-dev"
+    }
+  },
+  "require-dev": {
     "ext-json": "*"
   }
 }
