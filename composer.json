@@ -9,10 +9,10 @@
     "object"
   ],
   "require": {
-    "php": ">=7.3"
+    "php": ">=7.3",
+    "ext-json": "*"
   },
   "require-dev": {
-    "ext-json": "*"
   },
   "autoload": {
     "psr-4": {
