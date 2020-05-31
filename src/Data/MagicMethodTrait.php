@@ -27,6 +27,22 @@ trait MagicMethodTrait {
     }
 
     /**
+     * @param string $field
+     * @return mixed
+     */
+    public function __get (string $field) {
+        return $this->_get($field);
+    }
+
+    /**
+     * @param string $field
+     * @return bool
+     */
+    public function __isset (string $field): bool {
+        return $this->_is($field);
+    }
+
+    /**
      * Getter with default.
      *
      * @param string $field
