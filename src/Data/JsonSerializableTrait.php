@@ -3,7 +3,6 @@
 namespace Base\Data;
 
 use Base\Data;
-use JsonException;
 
 /**
  * @mixin Data
@@ -11,10 +10,11 @@ use JsonException;
 trait JsonSerializableTrait {
 
     /**
-     * @return string
-     * @throws JsonException
+     * @return array
      */
-    public function jsonSerialize (): string {
-        return json_encode($this->toArray(), JSON_PRETTY_PRINT | JSON_THROW_ON_ERROR);
+    public function jsonSerialize (): array {
+        $data = $this->toArray();
+        ksort($data);
+        return $data;
     }
 }

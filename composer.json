@@ -9,8 +9,7 @@
     "object"
   ],
   "require": {
-    "php": ">=7.3",
-    "ext-json": "*"
+    "php": ">=7.3"
   },
   "require-dev": {
   },
