@@ -27,7 +27,28 @@ class Data {
     /**
      * @return array
      */
-    public function diff () {
+    public function __debugInfo (): array {
+        return $this->data;
+    }
+
+    /**
+     * @return bool
+     */
+    public function isDiff (): bool {
+        return (bool)$this->diff;
+    }
+
+    /**
+     * @return array
+     */
+    public function toArray (): array {
+        return $this->data;
+    }
+
+    /**
+     * @return array
+     */
+    public function toDiff (): array {
         return array_intersect_key($this->data, $this->diff);
     }
 }

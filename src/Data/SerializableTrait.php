@@ -13,7 +13,7 @@ trait SerializableTrait {
      * @return string
      */
     public function serialize (): string {
-        return serialize($this->data);
+        return serialize($this->toArray());
     }
 
     /**
