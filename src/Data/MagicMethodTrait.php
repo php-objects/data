@@ -5,11 +5,17 @@ namespace Base\Data;
 use Base\Data;
 
 /**
+ * Autowires magic methods to real methods.
+ *
+ * Magic methods should be annotated in your classes, though this does not require that.
+ *
  * @mixin Data
  */
 trait MagicMethodTrait {
 
     /**
+     * Forwards `->xyzFieldName123(...$args)` to `->_xyz('field_name123', ...$args)`
+     *
      * @param string $method
      * @param array $args
      * @return mixed
@@ -17,10 +23,10 @@ trait MagicMethodTrait {
     public function __call (string $method, array $args) {
         static $magic = [];
         if (!$call =& $magic[$method]) {
-            preg_match('/^(get|has|is|set)(.+)$/', $method, $call);
+            preg_match('/^([a-z]+)(.+)$/', $method, $call);
             $call[1] = '_' . $call[1];
-            $call[2] = preg_replace_callback('/[A-Z]/', function(string $letter) {
-                return '_' . strtolower($letter);
+            $call[2] = preg_replace_callback('/[A-Z]/', function(array $match) {
+                return '_' . lcfirst($match[0]);
             }, lcfirst($call[2]));
         }
         return $this->{$call[1]}($call[2], ...$args);
@@ -45,6 +51,8 @@ trait MagicMethodTrait {
     /**
      * Getter with default.
      *
+     * Example: `getFoo($default = null)`
+     *
      * @param string $field
      * @param mixed $default
      * @return mixed
@@ -55,6 +63,8 @@ trait MagicMethodTrait {
 
     /**
      * Whether a countable field has anything in it, or boolean cast of scalar field.
+     *
+     * Example: `hasFoo()`
      *
      * @param string $field
      * @return bool
@@ -73,6 +83,8 @@ trait MagicMethodTrait {
     /**
      * Boolean cast.
      *
+     * Example: `isFoo()`
+     *
      * @param string $field
      * @return bool
      */
@@ -82,6 +94,8 @@ trait MagicMethodTrait {
 
     /**
      * Fluent setter.
+     *
+     * Example: `setFoo($foo)`
      *
      * @param string $field
      * @param mixed $value
